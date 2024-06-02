@@ -75,10 +75,10 @@ bindkey -v
 bindkey '\e[1;5A' fzf-history-widget
 
 # export bat theme so delta will see it
-export BAT_THEME="OneDark"
+export BAT_THEME="TwoDark"
 
 DELTA_PAGER='less -RFX' # trying to make delta use less that autodetects the terminal width
-alias delta='delta --theme OneDark'
+alias delta='delta --theme TwoDark'
 
 alias ls='ls -F --color=auto'
 alias ll='ls -lF --color=auto'
