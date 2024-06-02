@@ -1,0 +1,86 @@
+# Alacritty Configuration File
+
+# Import additional configuration files
+# import = [ "~/.config/alacritty/base16-dark.toml", "~/.config/alacritty/keybindings.toml" ]
+
+[[keyboard.bindings]]
+key = "Up"
+mods = "Command"
+chars = "\u001b[1;5A"
+
+# Shell configuration
+[shell]
+program = "/bin/zsh"
+args = [ "-l" ]
+
+[cursor]
+style = { shape = "Underline", blinking = "Always" }
+blink_interval = 167
+blink_timeout = 0
+thickness = 0.25
+
+unfocused_hollow = false
+
+# Working directory
+# working_directory = "None"
+
+# Environment variables
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+# Window settings
+[window]
+dimensions = { columns = 96, lines = 36 }
+# position = { x = 0, y = 0 }
+padding = { x = 4, y = 1 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
+blur = false
+startup_mode = "Windowed"
+
+# Font settings
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font]
+size=14.0
+
+# Colors
+[colors]
+    [colors.primary]
+    background = "#202020"  # Background color
+    foreground = "#b0b0b0"  # Default font color
+
+    [colors.normal]
+    black = "#21222c"
+    red = "#ff5555"
+    green = "#50fa7b"
+    yellow = "#f1fa8c"
+    blue = "#bd93f9"
+    magenta = "#ff79c6"
+    cyan = "#8be9fd"
+    white = "#f8f8f2"
+
+    [colors.bright]
+    black = "#6272a4"
+    red = "#ff6e6e"
+    green = "#69ff94"
+    yellow = "#ffffa5"
+    blue = "#d6acff"
+    magenta = "#ff92df"
+    cyan = "#a4ffff"
+    white = "#ffffff"
