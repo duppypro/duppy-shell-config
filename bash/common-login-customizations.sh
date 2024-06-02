@@ -163,7 +163,7 @@ function diffp() {
     # --preview 'git diff -U0 --color=always origin -- ../$(echo {} | cut -d " " -f 2)' >/dev/null
     local branch_a=${1}
     local branch_b=${2}
-    local preview_cmd="git diff -U0 --color=always ${branch_a} ${branch_b} -- ../\$(echo {} | cut -d \" \" -f 2)"
+    local preview_cmd="git diff -U0 --color=always ${branch_a} ${branch_b} -- ./\$(echo {} | cut -d \" \" -f 2)"
 
     git diff ${branch_a} ${branch_b} --stat --color=always | \
     head -n -1 | \
