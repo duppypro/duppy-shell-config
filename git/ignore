@@ -1,2 +1,11 @@
+# OS specific local preferences
 .DS_Store
+
+# files with secrets, passwords, tokens, credentials, or privatekeys
 *secret*
+*credential*
+*private*
+
+# temp files
+*swp
+*~
