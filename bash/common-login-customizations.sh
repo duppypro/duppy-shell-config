@@ -157,17 +157,24 @@ function grep-all-logs() {
         }' | \
     sort --reverse
 }
-function diffp() {
+function fzgit-diff() {
     # derived from
     # git diff origin/main HEAD --stat | head -n -1 | fzf --height 100% --preview-window=up:36 --layout=reverse
     # --preview 'git diff -U0 --color=always origin -- ../$(echo {} | cut -d " " -f 2)' >/dev/null
     local branch_a=${1}
     local branch_b=${2}
-    local preview_cmd="git diff -U0 --color=always ${branch_a} ${branch_b} -- ./\$(echo {} | cut -d \" \" -f 2)"
+    local preview_cmd="git diff "
+        preview_cmd+=" -U0 --color=always "
+        preview_cmd+=" ${branch_a} ${branch_b} "
+        preview_cmd+=" -- "
+        preview_cmd+=" ./\$( "
+            preview_cmd+=" echo {} | cut -d \" \" -f 2 "
+        preview_cmd+=" ) "
 
     git diff ${branch_a} ${branch_b} --stat --color=always | \
     head -n -1 | \
     sort -r -k 3 | \
+    sed 's/$/\r/' | tee /dev/tty | sed 's/\r$//' | \
     fzf \
         --prompt="Diff: ${branch_a} ${branch_b} > " \
         --ansi \
