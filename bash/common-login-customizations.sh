@@ -112,7 +112,9 @@ alias ll='ls -l'
 timestamp() {
     date "+%s_%Y-%m-%d_%I:%M_%p"
 }
-LOGS=$HOME/GitHub/LOGS; [ -d $LOGS ] || mkdir -p $LOGS
+
+LOGS=$HOME/LOGS; [ -d $LOGS ] || mkdir -p $LOGS
+
 function latest-log() {
     # $1=prefix $2=postfix $3=which where 1 is most recent 2 is 2nd most recent etc
     local prefix=$1
@@ -120,13 +122,16 @@ function latest-log() {
     local which=${3:-1} # default to '1' which is most recent
     ls -t $LOGS/$prefix*$postfix | sed -n "${3:-1}p"
 }
+
 function c-log() {
     code $(latest-log $*)
 }
+
 function term_width() {
     echo $COLUMNS
     # NOTE: tried tput cols, but it gets capped at 80 columns
 }
+
 function back_from_eol() {
     local spaces=$((${1:-10} - 1))
     # get current cursor position and printf spaces equal to term_width - spaces - position
@@ -135,7 +140,8 @@ function back_from_eol() {
     tput hpa $(term_width)
     tput cub $spaces
 }
-function grep-all-logs() {
+
+function ffgrep() {
     local regex=${1:-Rebooting}
     local bar_len=${2:-64}
     local scale_down=${3:-1}
@@ -157,7 +163,8 @@ function grep-all-logs() {
         }' | \
     sort --reverse
 }
-function fzgit-diff() {
+
+function ffgit-diff() {
     # derived from
     # git diff origin/main HEAD --stat | head -n -1 | fzf --height 100% --preview-window=up:36 --layout=reverse
     # --preview 'git diff -U0 --color=always origin -- ../$(echo {} | cut -d " " -f 2)' >/dev/null
@@ -178,9 +185,26 @@ function fzgit-diff() {
     fzf \
         --prompt="Diff: ${branch_a} ${branch_b} > " \
         --ansi \
-        --height 100% \
-        --preview-window=up:36 \
-        --layout=reverse \
+        --height 67% \
+        --preview-window=right:50% \
+        --reverse \
+        --preview ${preview_cmd} \
+    >/dev/null
+}
+
+function ffgit-log() {
+    # derived from
+    # git logp | fzf --ansi --reverse --preview "echo {} | sed -n -E 's/^[^0-9a-f]*([0-9a-f]+).*/\1/p' | xargs -I {} git diff --stat --color {}\~1 {} 2>&1" 
+    local preview_cmd="echo {} | "
+        preview_cmd+="sed -n -E 's/^[^0-9a-f]*([0-9a-f]+).*/\1/p' | "
+        preview_cmd+="xargs -I {} git diff --stat --color {}\~1 {} 2>&1"
+
+    git logp | \
+    fzf \
+        --ansi \
+        --height 67% \
+        --preview-window=right:50% \
+        --reverse \
         --preview ${preview_cmd} \
     >/dev/null
 }
