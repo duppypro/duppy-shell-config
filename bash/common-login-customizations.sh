@@ -120,7 +120,7 @@ function latest-log() {
     local prefix=$1
     local postfix=$2
     local which=${3:-1} # default to '1' which is most recent
-    ls -t $LOGS/$prefix*$postfix | sed -n "${3:-1}p"
+    ls -t $LOGS/$prefix*$postfix | sed -n "${which}p"
 }
 
 function c-log() {
@@ -142,26 +142,41 @@ function back_from_eol() {
 }
 
 function ffgrep() {
-    local regex=${1:-Rebooting}
-    local bar_len=${2:-64}
-    local scale_down=${3:-1}
-    # WARN: this fn only scans top level of $LOGS
-    fd -d 1 monitor $LOGS | \
-    xargs grep -a -c --color=never $regex | \
-    sed 's/.ansi.txt/*.txt/' | sed 's/^.*monitor/*m*/' | \
+    local regex=${1:-error}
+    local files=${2:-$LOGS}
+    local bar_len=${bar_len:-$(($(term_width) / 2))}
+    local bar_scale=${bar_scale:-1}
+    # WARN: this fn only scans top level of $files
+    fd -d 1 idf-monitor $files | \
+    xargs grep -a -c -i --color=never $regex | \
+    sed -E 's/(^.*):([0-9]+)$/\1 \2/' | \
     awk \
-        -v scale=$scale_down \
+        -v scale=$bar_scale \
         -v bar="${bar3:0:$bar_len}" \
         -v color="$YELLOW" \
         -v pos="$(back_from_eol $bar_len)" \
         -v nc="$RESET" \
-        -F: \
-        '!/:0$/ { \
-            len = int(0.5+$NF/scale); \
+        '$2 > 0 { \
+            len = int(0.5+$NF*scale); \
             str = len ? substr(bar,0,len) : "|"; \
             printf "%s %s%s%s%s\n", $0, color, pos, str, nc; \
         }' | \
     sort --reverse
+}
+
+function ffgrep-p() {
+    local regex=${1:-error}
+    local files=${2:-$LOGS}
+    # derived from
+    # ffgrep $regex $files | \
+    # fzf --ansi --preview "\
+        # echo {} | awk '{print \$1}' | \ 
+        # xargs -I {} sh -c \
+        # \"grep -a -i -m 1 'fw_ver' {}; \ 
+        # grep -a -i $regex {}\" | \
+        # " | \
+    # awk '{print $1}'
+
 }
 
 function ffgit-diff() {
