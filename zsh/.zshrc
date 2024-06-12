@@ -9,10 +9,9 @@ BRANCH=$'\uf126'
 function get_git_branch() {
     echo $BRANCH$(git symbolic-ref --short HEAD 2>/dev/null)
 }
-function unix_secs() {
+function pretty_unix_secs() {
     # render unix seconds with first 5 digits dim green and last 5 digits bright green
-    local secs=$(date +%s)
-    echo -e "$DKGREEN${secs:0:5}$GREEN${secs:5:5}$RESET"
+    echo -e "$DKGREEN${unix_secs:0:5}$GREEN${unix_secs:5:5}$RESET"
 }
 
 setopt PROMPT_SUBST
@@ -22,11 +21,11 @@ PROMPT=\
 '%F{black}%~/%f'\
 ' %F{237}$(get_git_branch)%f'\
 ' %F{239}%n@%m%f %k'\
-'$(back_from_eol 10)$(unix_secs)'\
+'$(back_from_eol 10)$(pretty_unix_secs)'\
 '${CRLF}'\
 '%K{244}%F{239}!%h%k %F{051}> %f'
 
-unset RPROMPT # export RPROMPT='%F{002}$(unix_secs)%f'
+unset RPROMPT # export RPROMPT='%F{002}$(pretty_unix_secs)%f'
 
 # --- format stderr fancy ---
 # exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )

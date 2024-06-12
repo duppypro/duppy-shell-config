@@ -4,84 +4,84 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH" # prefer gsed
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" # prefer gnu coreutils
 
 # --- my useful environment variables ---
-CRLF=$'\r\n'
+export CRLF=$'\r\n'
 # ansi escape code colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-BLUE='\033[0;34m'
-MAGENTA='\033[0;35m'
-CYAN='\033[0;36m'
-RESET='\033[0m' # No Color
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;33m'
+export BLUE='\033[0;34m'
+export MAGENTA='\033[0;35m'
+export CYAN='\033[0;36m'
+export RESET='\033[0m' # No Color
 # truecolor escape code colors
-RED='\033[38;2;255;0;0m'
-GREEN='\033[38;2;0;255;0m'
-YELLOW='\033[38;2;255;255;0m'
-BLUE='\033[38;2;0;0;255m'
-MAGENTA='\033[38;2;255;0;255m'
-CYAN='\033[38;2;0;255;255m'
-GREY='\033[38;2;128;128;128m'
-DKRED='\033[38;2;128;0;0m'
-DKGREEN='\033[38;2;0;128;0m'
-DKYELLOW='\033[38;2;128;128;0m'
-DKBLUE='\033[38;2;0;0;128m'
-DKMAGENTA='\033[38;2;128;0;128m'
-DKCYAN='\033[38;2;0;128;128m'
-DKGREY='\033[38;2;64;64;64m'
-LTRED='\033[38;2;255;128;128m'
-LTGREEN='\033[38;2;128;255;128m'
-LTYELLOW='\033[38;2;255;255;128m'
-LTBLUE='\033[38;2;128;128;255m'
-LTMAGENTA='\033[38;2;255;128;255m'
-LTCYAN='\033[38;2;128;255;255m'
-LTGREY='\033[38;2;192;192;192m'
-WHITE='\033[38;2;255;255;255m'
+export RED='\033[38;2;255;0;0m'
+export GREEN='\033[38;2;0;255;0m'
+export YELLOW='\033[38;2;255;255;0m'
+export BLUE='\033[38;2;0;0;255m'
+export MAGENTA='\033[38;2;255;0;255m'
+export CYAN='\033[38;2;0;255;255m'
+export GREY='\033[38;2;128;128;128m'
+export DKRED='\033[38;2;128;0;0m'
+export DKGREEN='\033[38;2;0;128;0m'
+export DKYELLOW='\033[38;2;128;128;0m'
+export DKBLUE='\033[38;2;0;0;128m'
+export DKMAGENTA='\033[38;2;128;0;128m'
+export DKCYAN='\033[38;2;0;128;128m'
+export DKGREY='\033[38;2;64;64;64m'
+export LTRED='\033[38;2;255;128;128m'
+export LTGREEN='\033[38;2;128;255;128m'
+export LTYELLOW='\033[38;2;255;255;128m'
+export LTBLUE='\033[38;2;128;128;255m'
+export LTMAGENTA='\033[38;2;255;128;255m'
+export LTCYAN='\033[38;2;128;255;255m'
+export LTGREY='\033[38;2;192;192;192m'
+export WHITE='\033[38;2;255;255;255m'
 
-bar1="++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-bar1=$bar1$bar1
-bar2="****************************************************************"
-bar2=$bar2$bar2
-bar3="################################################################"
-bar3=$bar3$bar3
-bar4=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-bar4=$bar4$bar4
-bar5="================================================================"
-bar5=$bar5$bar5
+export bar1="++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+export bar1=$bar1$bar1
+export bar2="****************************************************************"
+export bar2=$bar2$bar2
+export bar3="################################################################"
+export bar3=$bar3$bar3
+export bar4=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+export bar4=$bar4$bar4
+export bar5="================================================================"
+export bar5=$bar5$bar5
 # meter1="▁▂▃▄▅▆▇█"
 # meter2="▏▎▍▌▋▊▉█"
-border_upper_left_corner="┌"
-border_upper_right_corner="┐"
-border_lower_left_corner="└"
-border_lower_right_corner="┘"
-border_horizontal_line="─"
-border_vertical_line="│"
-border_cross="┼"
-border_tee_up="┴"
-border_tee_down="┬"
-border_tee_left="┤"
-border_tee_right="├"
-border_thick_upper_left_corner="┏"
-border_thick_upper_right_corner="┓"
-border_thick_lower_left_corner="┗"
-border_thick_lower_right_corner="┛"
-border_thick_horizontal_line="━"
-border_thick_vertical_line="┃"
-border_thick_cross="╋"
-border_thick_tee_up="┻"
-border_thick_tee_down="┳"
-border_thick_tee_left="┫"
-border_thick_tee_right="┣"
-border_doulbe_upper_left_corner="╔"
-border_doulbe_upper_right_corner="╗"
-border_doulbe_lower_left_corner="╚"
-border_doulbe_lower_right_corner="╝"
-border_doulbe_horizontal_line="═"
-border_doulbe_vertical_line="║"
-border_doulbe_cross="╬"
-border_doulbe_tee_up="╩"
-border_doulbe_tee_down="╦"
-border_doulbe_tee_left="╣"
-border_doulbe_tee_right="╠"
+export border_upper_left_corner="┌"
+export border_upper_right_corner="┐"
+export border_lower_left_corner="└"
+export border_lower_right_corner="┘"
+export border_horizontal_line="─"
+export border_vertical_line="│"
+export border_cross="┼"
+export border_tee_up="┴"
+export border_tee_down="┬"
+export border_tee_left="┤"
+export border_tee_right="├"
+export border_thick_upper_left_corner="┏"
+export border_thick_upper_right_corner="┓"
+export border_thick_lower_left_corner="┗"
+export border_thick_lower_right_corner="┛"
+export border_thick_horizontal_line="━"
+export border_thick_vertical_line="┃"
+export border_thick_cross="╋"
+export border_thick_tee_up="┻"
+export border_thick_tee_down="┳"
+export border_thick_tee_left="┫"
+export border_thick_tee_right="┣"
+export border_doulbe_upper_left_corner="╔"
+export border_doulbe_upper_right_corner="╗"
+export border_doulbe_lower_left_corner="╚"
+export border_doulbe_lower_right_corner="╝"
+export border_doulbe_horizontal_line="═"
+export border_doulbe_vertical_line="║"
+export border_doulbe_cross="╬"
+export border_doulbe_tee_up="╩"
+export border_doulbe_tee_down="╦"
+export border_doulbe_tee_left="╣"
+export border_doulbe_tee_right="╠"
 
 # Remind me to use all the colors every time I log in!
 printf "${RED}red${RESET}/"
@@ -109,12 +109,12 @@ alias ls='ls -a -G --color=always'
 alias ll='ls -l'
 
 # --- my functions ---
-timestamp() {
-    date "+%s_%Y-%m-%d_%I:%M_%p"
-}
+alias unix_secs='date +%s'
+alias timestamp='date +%s_%Y-%m-%d_%I:%M_%p'
 
-LOGS=$HOME/LOGS; [ -d $LOGS ] || mkdir -p $LOGS
+export LOGS=$HOME/LOGS; [ -d $LOGS ] || mkdir -p $LOGS
 
+export -f latest-log
 function latest-log() {
     # $1=prefix $2=postfix $3=which where 1 is most recent 2 is 2nd most recent etc
     local prefix=$1
@@ -123,15 +123,18 @@ function latest-log() {
     ls -t $LOGS/$prefix*$postfix | sed -n "${which}p"
 }
 
+export -f c-log
 function c-log() {
     code $(latest-log $*)
 }
 
+export -f term_width
 function term_width() {
     echo $COLUMNS
     # NOTE: tried tput cols, but it gets capped at 80 columns
 }
 
+export -f back_from_eol
 function back_from_eol() {
     local spaces=$((${1:-10} - 1))
     # get current cursor position and printf spaces equal to term_width - spaces - position
@@ -141,6 +144,7 @@ function back_from_eol() {
     tput cub $spaces
 }
 
+export -f ffgrep
 function ffgrep() {
     local regex=${1:-error}
     local files=${2:-$LOGS}
@@ -164,6 +168,7 @@ function ffgrep() {
     sort --reverse
 }
 
+export -f ffgrep-p
 function ffgrep-p() {
     local regex=${1:-error}
     local files=${2:-$LOGS}
@@ -179,6 +184,7 @@ function ffgrep-p() {
 
 }
 
+export -f ffgit-diff
 function ffgit-diff() {
     # derived from
     # git diff origin/main HEAD --stat | head -n -1 | fzf --height 100% --preview-window=up:36 --layout=reverse
@@ -207,6 +213,7 @@ function ffgit-diff() {
     >/dev/null
 }
 
+export -f ffgit-log
 function ffgit-log() {
     # derived from
     # git logp | fzf --ansi --reverse --preview "echo {} | sed -n -E 's/^[^0-9a-f]*([0-9a-f]+).*/\1/p' | xargs -I {} git diff --stat --color {}\~1 {} 2>&1" 
